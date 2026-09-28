@@ -1,9 +1,6 @@
 package com.mycompany.project_loganalyst;
  
-/**
- * Class SuccessLogin (Subclass / Child)
- * Turunan dari LogEntry, khusus untuk log login yang BERHASIL.
- */
+
 public class SuccessLogin extends LogEntry {
  
     private String username;

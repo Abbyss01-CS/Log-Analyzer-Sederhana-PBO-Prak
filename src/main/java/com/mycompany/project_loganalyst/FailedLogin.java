@@ -8,7 +8,6 @@ public class FailedLogin extends LogEntry {
  
     private int attemptCount;
  
-    // Constructor: memanggil constructor parent lewat super()
     public FailedLogin(String ip, String timestamp, int attemptCount) {
         super(ip, "FAILED", timestamp);
         this.attemptCount = attemptCount;
@@ -26,15 +25,13 @@ public class FailedLogin extends LogEntry {
         }
     }
  
-    // Method baru khusus subclass
     public boolean isSuspicious() {
         return attemptCount > 2;
     }
  
-    // Override method dari parent
     @Override
     public void printInfo() {
-        super.printInfo(); // pakai tampilan dasar dari parent
+        super.printInfo();
         System.out.println("   Percobaan gagal: " + attemptCount + "x"
                 + (isSuspicious() ? "  [MENCURIGAKAN]" : ""));
     }
