@@ -2,30 +2,26 @@ package com.mycompany.project_loganalyst;
 
 /**
  * Abstract class LogEntry
- * Struktur dasar merepresentasikan satu baris log login.
  */
 public abstract class LogEntry {
+
     private String ip;
     private String status;
     private String timestamp;
 
-    
     public LogEntry(String ip, String status, String timestamp) {
         this.ip = ip;
         this.status = status;
         this.timestamp = timestamp;
     }
 
-    
     public void printInfo() {
         System.out.println("[" + timestamp + "] IP: " + ip + " -> " + status
                 + " (" + getLogType() + ")");
     }
 
-    
     public abstract String getLogType();
 
-   
     public String getIp() {
         return ip;
     }
@@ -34,21 +30,19 @@ public abstract class LogEntry {
         this.ip = ip;
     }
 
-   
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String status) throws StatusTidakValidException {
         if (status.equalsIgnoreCase("FAILED") || status.equalsIgnoreCase("SUCCESS")) {
             this.status = status;
         } else {
-            System.out.println("Gagal ubah status: nilai \"" + status
+            throw new StatusTidakValidException("Status \"" + status
                     + "\" tidak valid. Harus FAILED atau SUCCESS.");
         }
     }
 
-   
     public String getTimestamp() {
         return timestamp;
     }
